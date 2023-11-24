@@ -1,10 +1,14 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../Services/api_services/apiConstants.dart';
 import '../../Services/api_services/apiStrings.dart';
 import '../../Utils/Colors.dart';
+import 'package:http/http.dart'as http;
 
 class PrivacyPolicyScreen extends StatefulWidget {
   const PrivacyPolicyScreen({Key? key, }) : super(key: key);
@@ -46,42 +50,68 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
             ),
           ),
         ),
-        body: Center(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.all(20.0),
-              child: ListView(
-                children: [
-                  // privacyPolicy == null ? Center(child: CircularProgressIndicator()) :Html(
-                  //     data:"${privacyPolicy}"
-                  // )
-                ],
-              )
-            ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Column(
+              children: [
+                privacyPolicy == null ? Center(child: CircularProgressIndicator()) :Html(
+                    data:"${privacyPolicy}"
+                )
+              ],
+            )
           ),
         ),
       ),
     );
   }
 
-  String? privacyPolicy;
-  Future<void> getPrivacy() async {
-    // isLoading.value = true;
-    var param = {
-      'content':'privacy_policy'
-    };
-    apiBaseHelper.postAPICall(getPrivacyAPI, param).then((getData) {
-      bool status = getData['status'];
-      String msg = getData['msg'];
 
-      if (status == true) {
-        privacyPolicy = getData['content']['name'];
-        print('privacyPolicy${privacyPolicy}_________');
-        // getSliderModel = GetSliderModel.fromJson(getData);
-      } else {
-        Fluttertoast.showToast(msg: msg);
-      }
-      //isLoading.value = false;
+  String? privacyPolicy;
+  // Future<void> getPrivacy() async {
+  //   // isLoading.value = true;
+  //   var param = {
+  //     'content':'privacy_policy'
+  //   };
+  //   apiBaseHelper.postAPICall(getPrivacyAPI, param).then((getData) {
+  //     bool status = getData['status'];
+  //     String msg = getData['msg'];
+  //
+  //     if (status == true) {
+  //       privacyPolicy = getData['content']['name'];
+  //       print('privacyPolicy${privacyPolicy}_________');
+  //       // getSliderModel = GetSliderModel.fromJson(getData);
+  //     } else {
+  //       Fluttertoast.showToast(msg: msg);
+  //     }
+  //     //isLoading.value = false;
+  //   });
+  // }
+
+  getPrivacy() async {
+    var headers = {
+      'Content-Type': 'application/json',
+      'Cookie': 'ci_session=8144c3169cc147b811c9d62284d8e56afb722df6'
+    };
+    var request = http.Request('POST', Uri.parse('https://developmentalphawizz.com/lottery/Apicontroller/apiGetContent'));
+    request.body = json.encode({
+      "content": "privacy_policy"
     });
+    print('_____request.body_____${request.body}_________');
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+    if (response.statusCode == 200) {
+      final result =  await response.stream.bytesToString();
+      final jsonResponse = json.decode(result);
+      setState(() {
+        privacyPolicy = jsonResponse['content'][0]['name'];
+      });
+
+    }
+    else {
+    print(response.reasonPhrase);
+    }
+
   }
 }

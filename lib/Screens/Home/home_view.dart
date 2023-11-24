@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
-        body:getSliderModel == null ?Center(child: CircularProgressIndicator()) :RefreshIndicator(
+        body:getResultModel == null ?Center(child: CircularProgressIndicator()) :RefreshIndicator(
           onRefresh: () {
             return Future.delayed(Duration(seconds: 2),(){
               getSlider();
