@@ -55,7 +55,7 @@ class _ReferAndEranState extends State<ReferAndEran> {
             ),),
           toolbarHeight: 60,
           centerTitle: true,
-          title: const Text("Refer&Eran",style: TextStyle(fontSize: 17),),
+          title: const Text("Refer & Earn",style: TextStyle(fontSize: 17),),
           flexibleSpace: Container(
             decoration: const BoxDecoration(
               borderRadius:   BorderRadius.only(
@@ -78,7 +78,7 @@ class _ReferAndEranState extends State<ReferAndEran> {
                   Padding(
                     padding: const EdgeInsets.only(top: 28.0),
                     child: Text(
-                      "Refer And Eran",
+                      "Refer And Earn",
                       style: Theme.of(context).textTheme.headline5!.copyWith(
                           color: AppColors.fntClr),
                     ),

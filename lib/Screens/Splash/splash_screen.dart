@@ -80,14 +80,18 @@ class SplashScreen extends StatelessWidget {
   }
 
    checkLogin() async {
-    Timer(const Duration(seconds: 3), () async {
-      final isLogin = await SharedPre.getStringValue('userId');
+     final isLogin2 = await SharedPre.getStringValue('userId');
 
-      if (isLogin != null && isLogin != '') {
-        Get.offAllNamed(bottomBar);
-      } else {
-        Get.offAllNamed(loginScreen);
-      }
-    });
-  }
+     Future.delayed(const Duration(seconds: 1), () async {
+       final isLogin = await SharedPre.getStringValue('userId');
+
+       if (isLogin != null && isLogin != '') {
+         Get.offAllNamed(bottomBar);
+       } else {
+         Get.offAllNamed(loginScreen);
+       }
+     });
+     //  Timer(const Duration(seconds: 3), () async {
+   }
+
 }

@@ -32,7 +32,7 @@ RxBool isLoading = false.obs ;
       'mobile': data[0].toString(),
       'otp': otp,
     };
-    apiBaseHelper.postAPICall(verifyOTPAPI, param).then((getData) {
+    apiBaseHelper.postAPICall(verifyOTPAPI, param).then((getData) async {
       bool status = getData['status'];
       String msg = getData['msg'];
 
@@ -43,6 +43,8 @@ RxBool isLoading = false.obs ;
         SharedPre.setValue('userReferCode', getData['referral_code']);
         SharedPre.setValue('balanceUser', getData['wallet_balance']);
         SharedPre.setValue('userId', getData['user_id'].toString());
+        var id =await SharedPre.getStringValue('userId');
+        print( id + "VERIFIAITO ");
 
         Fluttertoast.showToast(msg: msg);
         Get.toNamed(bottomBar);

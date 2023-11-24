@@ -1,10 +1,16 @@
+import 'dart:convert';
+
 import 'package:booknplay/Utils/Colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../../Local_Storage/shared_pre.dart';
+import '../../Models/HomeModel/Get_transaction_model.dart';
 import '../../Models/HomeModel/lottery_list_model.dart';
 import '../../Widgets/button.dart';
+import 'package:http/http.dart'as http;
+
+import '../Dashboard/dashboard_view.dart';
 
 class WithdrawalScreen extends StatefulWidget {
   WithdrawalScreen({Key? key, this.isFrom,this.gId}) : super(key: key);
@@ -22,27 +28,30 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
     super.initState();
     balanceUser();
   }
-  String? userBalance;
+  String? userBalance,userId;
   balanceUser() async {
     userBalance = await SharedPre.getStringValue('balanceUser');
+    userId = await SharedPre.getStringValue('userId');
     setState(() {
-
+      getTransactionApi();
     });
   }
   String selectedOption = "UPI";
+  String selected = "Withdrawal";
   TextEditingController upiController = TextEditingController();
   TextEditingController accountNumberController = TextEditingController();
+  TextEditingController numberController = TextEditingController();
   TextEditingController ifscController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController amountController = TextEditingController();
   TextEditingController bankNameController = TextEditingController();
+  TextEditingController branchAddressController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-
           backgroundColor: AppColors.whit,
           appBar: AppBar(
             shape: const RoundedRectangleBorder(
@@ -64,14 +73,88 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
             ),
           ),
           body: SingleChildScrollView(
-            child: Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  showContent(),
-                 Padding(
-              padding: const EdgeInsets.all(16.0),
-        child: Column(
+            child:Column(
+              children: [
+                tabTop(),
+                _currentIndex == 1 ? withdrawal():withdrawalRequest()
+
+              ],
+            ),
+
+          )
+
+      ),
+    ) ;
+  }
+  int _currentIndex = 1 ;
+  tabTop(){
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        children: [
+          Expanded(
+            child: InkWell(
+              onTap: (){
+                setState(() {
+                  _currentIndex = 1;
+                  // getNewListApi(1);
+
+                });
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                    color: _currentIndex == 1 ?
+                    AppColors.secondary
+                        : AppColors.secondary.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(10)
+                ),
+                height: 45,
+                child: Center(
+                  child: Text("Withdrawal",style: TextStyle(color: _currentIndex == 1 ?AppColors.whit:AppColors.fntClr,fontSize: 18)),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(width: 5,),
+          Expanded(
+            child: InkWell(
+              onTap: (){
+                setState(() {
+                  _currentIndex = 2;
+                  // getNewListApi(3);
+                });
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                    color: _currentIndex == 2 ?
+                    AppColors.secondary
+                        : AppColors.secondary.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(10)
+                ),
+                // width: 120,
+                height: 45,
+                child: Center(
+                  child: Text("Withdrawal List",style: TextStyle(color: _currentIndex == 2 ?AppColors.whit:AppColors.fntClr,fontSize: 18),),
+                ),
+              ),
+            ),
+          ),
+
+        ],
+      ),
+    );
+  }
+
+
+  withdrawal(){
+    return  Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          showContent(),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 const Align(
@@ -130,6 +213,23 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
                           return null;
                         },
                       ),
+
+                      const SizedBox(height: 15),
+                      TextFormField(
+                        maxLength: 10,
+                        keyboardType: TextInputType.number,
+                        controller: numberController,
+                        decoration: const InputDecoration(
+                            counterText: "",
+                            border: OutlineInputBorder(),
+                            hintText: 'Enter Number'),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter number';
+                          }
+                          return null;
+                        },
+                      ),
                       const SizedBox(height: 15),
                       TextFormField(
                         keyboardType: TextInputType.number,
@@ -146,7 +246,6 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
                       ),
                     ],
                   ),
-
                 if (selectedOption == 'Bank Details')
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -166,10 +265,26 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
                       ),
                       const SizedBox(height: 15),
                       TextFormField(
+                        maxLength: 10,
+                        keyboardType: TextInputType.number,
+                        controller: numberController,
+                        decoration: const InputDecoration(
+                            counterText: "",
+                            border: OutlineInputBorder(),
+                            hintText: 'Enter Number'),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter  number';
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 15),
+                      TextFormField(
                         keyboardType: TextInputType.number,
                         controller: accountNumberController,
                         decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
+                            border: OutlineInputBorder(),
                             hintText: 'Enter Account Number'),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -180,7 +295,6 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
                       ),
                       const SizedBox(height: 15),
                       TextFormField(
-                        keyboardType: TextInputType.number,
                         controller: bankNameController,
                         decoration: const InputDecoration(
                             border: OutlineInputBorder(),
@@ -188,6 +302,19 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter bank name';
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 15),
+                      TextFormField(
+                        controller: branchAddressController,
+                        decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: 'Enter Branch Address'),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter branch address';
                           }
                           return null;
                         },
@@ -222,71 +349,96 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
                       // Add more TextFormField widgets for other bank details here
                     ],
                   ),
-                 const SizedBox(height: 20.0),
-                  AppButton1(
-                 title: 'Withdrawal',
-                 onTap: (){
-                   if(_formKey.currentState!.validate()){
-                     if (selectedOption == 'UPI') {
-                       String upiID = upiController.text;
-                       // Perform actions with UPI ID
-                     } else if (selectedOption == 'Bank Details') {
-                       String accountNumber = accountNumberController.text;
-                       String ifscCode = ifscController.text;
-                       String name = nameController.text;
-                       // Perform actions with bank details
-                     }
-                   }else{
-                     Fluttertoast.showToast(msg: "All field are required");
-                   }
+                const SizedBox(height: 20.0),
+                AppButton1(
+                  title: 'Withdrawal',
+                  onTap: (){
+                    if(_formKey.currentState!.validate()){
+                      if (selectedOption == 'UPI') {
+                        getWithdrawApi();
+                      } else if (selectedOption == 'Bank Details') {
 
-                 },
-               )
+                        getWithdrawApi();
+                      }
+                    }else{
+                      Fluttertoast.showToast(msg: "All field are required");
+                    }
+
+                  },
+                )
               ],
-        ),
-      ),
-
-                ],
-              ),
             ),
-          )
+          ),
 
+        ],
       ),
-    ) ;
+    );
   }
 
 
+  withdrawalRequest(){
+   return Container(
+     height:  MediaQuery.of(context).size.height/1.2,
+     child: ListView.builder(
+         itemCount: getTransactionModel?.withdrawdata?.length,
+         itemBuilder: (context,i){
+           return Card(
+             child: Padding(
+               padding: const EdgeInsets.all(8.0),
+               child: Column(
+                 crossAxisAlignment: CrossAxisAlignment.start,
+                 children: [
+                   getTransactionModel?.withdrawdata?[i].acHolderName == "" ? Text(" No acHolderName"): Text("${getTransactionModel?.withdrawdata?[i].acHolderName}"),
+                  SizedBox(height: 5,),
+                  Text("${getTransactionModel?.withdrawdata?[i].requestNumber}"),
+                  Text("₹ ${getTransactionModel?.withdrawdata?[i].requestAmount}"),
+                 ],
+               ),
+             ),
+           );
+         }),
+   );
+  }
+
+  getWithdrawApi() async {
+    var headers = {
+      'Content-Type': 'application/json',
+      'Cookie': 'ci_session=0c843f87edbac1212c2ea7bef4659a143e3ccbd2'
+    };
+    var request = http.Request('POST', Uri.parse('https://developmentalphawizz.com/lottery/Apicontroller/apiUserWithdrawFundRequest'));
+    request.body = json.encode({
+      "user_id":userId,
+      "request_amount":amountController.text,
+      "request_number": numberController.text,
+      "payment_method": selectedOption == 'UPI' ? 2 : 1,
+      "upi_id": selectedOption == 'UPI' ? upiController.text  :"",
+      "bank_name":selectedOption == 'Bank Details' ? bankNameController.text : "",
+      "branch_address":selectedOption == 'Bank Details' ? branchAddressController.text  : "",
+      "ac_holder_name":selectedOption == 'Bank Details' ? nameController.text  : "",
+      "ac_number":selectedOption == 'Bank Details' ? accountNumberController.text  : "",
+      "ifsc_code":selectedOption == 'Bank Details' ? ifscController.text  : "",
+    });
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+    if (response.statusCode == 200) {
+      var result =  await response.stream.bytesToString();
+      var finalResult =  jsonDecode(result);
+      Fluttertoast.showToast(msg: "${finalResult['msg']}");
+      if(finalResult['status'] == true){
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>DashBoardScreen()));
+      }
+
+
+    }
+    else {
+    print(response.reasonPhrase);
+    }
+
+  }
+
   LotteryListModel? lotteryDetailsModel;
 
-//   String ?userId;
-//   getLottery() async {
-//     userId = await SharedPre.getStringValue('userId');
-//     var headers = {
-//       'Content-Type': 'application/json',
-//       'Cookie': 'ci_session=18afbdd33b04ace40a80944d83e9e23e3ab91c3e'
-//     };
-//     var request = http.Request('POST', Uri.parse('https://developmentalphawizz.com/lottery/Apicontroller/getLottery'));
-//     request.body = json.encode({
-//       "game_id": widget.gId,
-//       "user_id": userId
-//     });
-//     print('_____request.body_____${request.body}_________');
-//     request.headers.addAll(headers);
-//     http.StreamedResponse response = await request.send();
-//     if (response.statusCode == 200) {
-//       var result = await response.stream.bytesToString();
-//       var finalResult  =  LotteryListModel.fromJson(json.decode(result));
-//       Fluttertoast.showToast(msg: "${finalResult.msg}");
-//       setState(() {
-//         lotteryDetailsModel = finalResult;
-//
-//       });
-//     }
-//     else {
-//       print(response.reasonPhrase);
-//     }
-//
-//   }
   StateSetter? dialogState;
   TextEditingController  amtC = TextEditingController();
   TextEditingController  msgC = TextEditingController();
@@ -333,124 +485,33 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
       ]),
     );
   }
-  _showDialog() async {
-    bool payWarn = false;
-    await dialogAnimate(context,
-        StatefulBuilder(builder: (BuildContext context, StateSetter setStater) {
-          dialogState = setStater;
-          return AlertDialog(
-            contentPadding: const EdgeInsets.all(0.0),
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(5.0))),
-            content: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(20.0, 20.0, 0, 2.0),
-                    child: Text( "Add Money",
-                      style: TextStyle(color: AppColors.fntClr),
-                    ),
-                  ),
-                  // Divider(color: Theme.of(context).colorScheme.lightBlack),
-                  Form(
-                    key: _formKey,
-                    child: Flexible(
-                      child: SingleChildScrollView(
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                Padding(
-                                    padding: const EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
-                                    child: TextFormField(
-                                      keyboardType: TextInputType.number,
-                                      autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                      style: const TextStyle(
-                                        color: AppColors.fntClr,
-                                      ),
-                                      decoration: const InputDecoration(
-                                        hintText: 'Enter Amount',
-                                        hintStyle: TextStyle(color: AppColors.primary,
-                                            fontWeight: FontWeight.normal),
-                                      ),
-                                      controller: amtC,
-                                    )
-                                ),
-                                Padding(
-                                    padding: const EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
-                                    child: TextFormField(
-                                      autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                      style: const TextStyle(
-                                        color: AppColors.activeBorder,
-                                      ),
-                                      decoration: const InputDecoration(
-                                        hintText: "Message",
-                                        hintStyle: TextStyle(color: AppColors.primary,
-                                            fontWeight: FontWeight.normal),
-                                      ),
-                                      controller: msgC,
-                                    )),
-                                //Divider(),
-                                // Padding(
-                                //   padding: EdgeInsets.fromLTRB(20.0, 10, 20.0, 5),
-                                //   child: Text(
-                                //     "Select Payment Method",
-                                //     style: Theme.of(context).textTheme.subtitle2,
-                                //   ),
-                                // ),
-                                const Divider(),
+  GetTransactionModel? getTransactionModel;
+  getTransactionApi() async {
+    var headers = {
+      'Content-Type': 'application/json',
+      'Cookie': 'ci_session=18afbdd33b04ace40a80944d83e9e23e3ab91c3e'
+    };
+    var request = http.Request('POST', Uri.parse('https://developmentalphawizz.com/lottery/Apicontroller/apiUserWithdrawTransactionHistory'));
+    request.body = json.encode({
+      "user_id": userId
+    });
+    print('_____request.body_____${request.body}_________');
+    request.headers.addAll(headers);
+    http.StreamedResponse response = await request.send();
+    if (response.statusCode == 200) {
+      var result = await response.stream.bytesToString();
+      var finalResult  =  GetTransactionModel.fromJson(json.decode(result));
+      print('____result______${result}_________');
+      Fluttertoast.showToast(msg: "${finalResult.msg}");
+      setState(() {
+        getTransactionModel = finalResult;
+        print("withdraaaaaa ${getTransactionModel?.withdrawdata}");
+      });
+    }
+    else {
+      print(response.reasonPhrase);
+    }
 
-                              ])),
-                    ),
-                  )
-                ]),
-            actions: <Widget>[
-              TextButton(
-                  child: Text(
-                    'Cancel',
-                    style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
-                        color: AppColors.fntClr,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  }),
-              TextButton(
-                  child: Text(
-                    'Send',
-                    style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
-                        color: AppColors.fntClr,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  onPressed: () {
-                    //openCheckout(amtC.text);
-                  })
-            ],
-          );
-        }));
   }
-  dialogAnimate(BuildContext context, Widget dialge) {
-    return showGeneralDialog(
-        barrierColor: AppColors.fntClr,
-        transitionBuilder: (context, a1, a2, widget) {
-          return Transform.scale(
-            scale: a1.value,
-            child: Opacity(opacity: a1.value, child: dialge),
-          );
-        },
-        transitionDuration: const Duration(milliseconds: 200),
-        barrierDismissible: true,
-        barrierLabel: '',
-        context: context,
-        // pageBuilder: null
-        pageBuilder: (context, animation1, animation2) {
-          return Container();
-        } //as Widget Function(BuildContext, Animation<double>, Animation<double>)
-    );
-  }
-
 
 }

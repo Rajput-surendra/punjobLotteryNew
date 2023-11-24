@@ -1,23 +1,23 @@
 /// msg : "Lotteries list."
-/// data : {"name":"Matka Lottery","lotteries":[{"game_id":"24","game_name":"Matka Lottery","game_name_hindi":"","open_time":"02:00 PM","open_time_sort":"00:00:00","close_time":"06:30 PM","status":"1","result_status":"1","market_status":"1","market_off_day":"","date":"2023-11-22","end_date":"2023-11-24","result_date":"2023-11-27","result_time":"12:12","ticket_price":"500","image":"https://developmentalphawizz.com/lottery/assets/images/1700829485alpha_giftnew_logo.png","lottery_number":"","winners":[{"id":"22","game_id":"24","winner_price":"100000","winning_position":"1st","lottery_no":"PB101","lottery_number":"PB101","user_id":"39","book_status":"1","purchase_status":"1","user_name":"Som Rajpoot ","email":"","mobile":"6363636363","password":"","api_key":"","referral_code":"6cec52b32921","referred_by":"","security_pin":"9581","image":"2199753295952965298.jpg","wallet_balance":"93","hold_amount":"7","last_update":"2023-11-21 15:01:43","insert_date":"2023-11-24 18:22:50","status":"1","verified":"1","betting_status":"1","notification_status":"1","transfer_point_status":"0"},{"id":"25","game_id":"24","winner_price":"80000","winning_position":"2nd","lottery_no":"PB104","lottery_number":"PB104","user_id":"6","book_status":"1","purchase_status":"1","user_name":"Sunil","email":"","mobile":"8888647482","password":"e10adc3949ba59abbe56e057f20f883e","api_key":"","referral_code":"","referred_by":"","security_pin":"9992","image":"uploads/img/user/user.png","wallet_balance":"13000","hold_amount":"0","last_update":"2023-10-20 19:38:39","insert_date":"2023-11-24 12:54:24","status":"1","verified":"1","betting_status":"1","notification_status":"1","transfer_point_status":"0"},{"id":"27","game_id":"24","winner_price":"50000","winning_position":"3rd","lottery_no":"PB106","lottery_number":"PB106","user_id":"21","book_status":"1","purchase_status":"1","user_name":"Surendra","email":"","mobile":"9999999999","password":"","api_key":"","referral_code":"2675db01c965","referred_by":"","security_pin":"3053","image":"user.png","wallet_balance":"0","hold_amount":"0","last_update":"2023-11-08 17:16:25","insert_date":"2023-11-23 16:05:24","status":"1","verified":"0","betting_status":"0","notification_status":"1","transfer_point_status":"0"}],"user_count":"0","active":"1"},{"game_id":"25","game_name":"Matka Lottery","game_name_hindi":"","open_time":"11:11 AM","open_time_sort":"00:00:00","close_time":"12:12 PM","status":"1","result_status":"1","market_status":"1","market_off_day":"","date":"2023-11-22","end_date":"2023-11-25","result_date":"2023-11-30","result_time":"12:12","ticket_price":"20","image":"https://developmentalphawizz.com/lottery/assets/images/","lottery_number":"","winners":[{"id":"30","game_id":"25","winner_price":"11110","winning_position":"1st","lottery_no":"PB101000","lottery_number":"PB101000","user_id":"39","book_status":"1","purchase_status":"1","user_name":"Som Rajpoot ","email":"","mobile":"6363636363","password":"","api_key":"","referral_code":"6cec52b32921","referred_by":"","security_pin":"9581","image":"2199753295952965298.jpg","wallet_balance":"93","hold_amount":"7","last_update":"2023-11-21 15:01:43","insert_date":"2023-11-24 18:22:50","status":"1","verified":"1","betting_status":"1","notification_status":"1","transfer_point_status":"0"},{"id":"34","game_id":"25","winner_price":"8000","winning_position":"2nd","lottery_no":"PB101500","lottery_number":"PB101500","user_id":"45","book_status":"1","purchase_status":"1","user_name":"Rohan ","email":"","mobile":"7828876951","password":"","api_key":"","referral_code":"4e8175cec340","referred_by":"","security_pin":"3613","image":"3239870587823406700.jpg","wallet_balance":"0","hold_amount":"0","last_update":"2023-11-24 10:19:51","insert_date":"2023-11-24 13:40:25","status":"1","verified":"1","betting_status":"0","notification_status":"1","transfer_point_status":"0"},{"id":"38","game_id":"25","winner_price":"7000","winning_position":"3rd","lottery_no":"PB101900","lottery_number":"PB101900","user_id":"39","book_status":"1","purchase_status":"0","user_name":"Som Rajpoot ","email":"","mobile":"6363636363","password":"","api_key":"","referral_code":"6cec52b32921","referred_by":"","security_pin":"9581","image":"2199753295952965298.jpg","wallet_balance":"93","hold_amount":"7","last_update":"2023-11-21 15:01:43","insert_date":"2023-11-24 18:22:50","status":"1","verified":"1","betting_status":"1","notification_status":"1","transfer_point_status":"0"}],"user_count":"0","active":"1"}]}
+/// data : {"name":"Matka Lottery","lotteries":[{"game_id":"25","game_name":"Matka Lottery","game_name_hindi":"","open_time":"11:11 AM","open_time_sort":"00:00:00","close_time":"12:12 PM","status":"1","result_status":"1","market_status":"1","market_off_day":"","date":"2023-11-22","end_date":"2023-11-25","result_date":"2023-11-30","ticket_price":"20","image":"https://developmentalphawizz.com/lottery/assets/images/1700651279lotteryback.png","lottery_number":"","winners":[{"id":"30","game_id":"25","winner_price":"11110","winning_position":"1st","lottery_no":"PB101000","lottery_number":"PB101000","user_id":"39","book_status":"1","purchase_status":"1","user_name":"Som Rajpoot ","email":"","mobile":"6363636363","password":"","api_key":"","referral_code":"6cec52b32921","referred_by":"","security_pin":"4243","image":"2199753295952965298.jpg","wallet_balance":"1000000","hold_amount":"0","last_update":"2023-11-21 15:01:43","insert_date":"2023-11-24 13:03:23","status":"1","verified":"1","betting_status":"1","notification_status":"1","transfer_point_status":"0"},{"id":"34","game_id":"25","winner_price":"8000","winning_position":"2nd","lottery_no":"PB101500","lottery_number":"PB101500","user_id":"45","book_status":"1","purchase_status":"1","user_name":"Rohan ","email":"","mobile":"7828876951","password":"","api_key":"","referral_code":"4e8175cec340","referred_by":"","security_pin":"3613","image":null,"wallet_balance":"0","hold_amount":"0","last_update":"2023-11-24 10:19:51","insert_date":"2023-11-24 10:19:56","status":"1","verified":"1","betting_status":"0","notification_status":"1","transfer_point_status":"0"},{"id":"38","game_id":"25","winner_price":"7000","winning_position":"3rd","lottery_no":"PB101900","lottery_number":"PB101900","user_id":"39","book_status":"1","purchase_status":"0","user_name":"Som Rajpoot ","email":"","mobile":"6363636363","password":"","api_key":"","referral_code":"6cec52b32921","referred_by":"","security_pin":"4243","image":"2199753295952965298.jpg","wallet_balance":"1000000","hold_amount":"0","last_update":"2023-11-21 15:01:43","insert_date":"2023-11-24 13:03:23","status":"1","verified":"1","betting_status":"1","notification_status":"1","transfer_point_status":"0"}],"user_count":"0","active":"1"}]}
 
-class GetResultModel {
-  GetResultModel({
+class GetResultDetailsModel {
+  GetResultDetailsModel({
       String? msg, 
       Data? data,}){
     _msg = msg;
     _data = data;
 }
 
-  GetResultModel.fromJson(dynamic json) {
+  GetResultDetailsModel.fromJson(dynamic json) {
     _msg = json['msg'];
     _data = json['data'] != null ? Data.fromJson(json['data']) : null;
   }
   String? _msg;
   Data? _data;
-GetResultModel copyWith({  String? msg,
+GetResultDetailsModel copyWith({  String? msg,
   Data? data,
-}) => GetResultModel(  msg: msg ?? _msg,
+}) => GetResultDetailsModel(  msg: msg ?? _msg,
   data: data ?? _data,
 );
   String? get msg => _msg;
@@ -35,7 +35,7 @@ GetResultModel copyWith({  String? msg,
 }
 
 /// name : "Matka Lottery"
-/// lotteries : [{"game_id":"24","game_name":"Matka Lottery","game_name_hindi":"","open_time":"02:00 PM","open_time_sort":"00:00:00","close_time":"06:30 PM","status":"1","result_status":"1","market_status":"1","market_off_day":"","date":"2023-11-22","end_date":"2023-11-24","result_date":"2023-11-27","result_time":"12:12","ticket_price":"500","image":"https://developmentalphawizz.com/lottery/assets/images/1700829485alpha_giftnew_logo.png","lottery_number":"","winners":[{"id":"22","game_id":"24","winner_price":"100000","winning_position":"1st","lottery_no":"PB101","lottery_number":"PB101","user_id":"39","book_status":"1","purchase_status":"1","user_name":"Som Rajpoot ","email":"","mobile":"6363636363","password":"","api_key":"","referral_code":"6cec52b32921","referred_by":"","security_pin":"9581","image":"2199753295952965298.jpg","wallet_balance":"93","hold_amount":"7","last_update":"2023-11-21 15:01:43","insert_date":"2023-11-24 18:22:50","status":"1","verified":"1","betting_status":"1","notification_status":"1","transfer_point_status":"0"},{"id":"25","game_id":"24","winner_price":"80000","winning_position":"2nd","lottery_no":"PB104","lottery_number":"PB104","user_id":"6","book_status":"1","purchase_status":"1","user_name":"Sunil","email":"","mobile":"8888647482","password":"e10adc3949ba59abbe56e057f20f883e","api_key":"","referral_code":"","referred_by":"","security_pin":"9992","image":"uploads/img/user/user.png","wallet_balance":"13000","hold_amount":"0","last_update":"2023-10-20 19:38:39","insert_date":"2023-11-24 12:54:24","status":"1","verified":"1","betting_status":"1","notification_status":"1","transfer_point_status":"0"},{"id":"27","game_id":"24","winner_price":"50000","winning_position":"3rd","lottery_no":"PB106","lottery_number":"PB106","user_id":"21","book_status":"1","purchase_status":"1","user_name":"Surendra","email":"","mobile":"9999999999","password":"","api_key":"","referral_code":"2675db01c965","referred_by":"","security_pin":"3053","image":"user.png","wallet_balance":"0","hold_amount":"0","last_update":"2023-11-08 17:16:25","insert_date":"2023-11-23 16:05:24","status":"1","verified":"0","betting_status":"0","notification_status":"1","transfer_point_status":"0"}],"user_count":"0","active":"1"},{"game_id":"25","game_name":"Matka Lottery","game_name_hindi":"","open_time":"11:11 AM","open_time_sort":"00:00:00","close_time":"12:12 PM","status":"1","result_status":"1","market_status":"1","market_off_day":"","date":"2023-11-22","end_date":"2023-11-25","result_date":"2023-11-30","result_time":"12:12","ticket_price":"20","image":"https://developmentalphawizz.com/lottery/assets/images/","lottery_number":"","winners":[{"id":"30","game_id":"25","winner_price":"11110","winning_position":"1st","lottery_no":"PB101000","lottery_number":"PB101000","user_id":"39","book_status":"1","purchase_status":"1","user_name":"Som Rajpoot ","email":"","mobile":"6363636363","password":"","api_key":"","referral_code":"6cec52b32921","referred_by":"","security_pin":"9581","image":"2199753295952965298.jpg","wallet_balance":"93","hold_amount":"7","last_update":"2023-11-21 15:01:43","insert_date":"2023-11-24 18:22:50","status":"1","verified":"1","betting_status":"1","notification_status":"1","transfer_point_status":"0"},{"id":"34","game_id":"25","winner_price":"8000","winning_position":"2nd","lottery_no":"PB101500","lottery_number":"PB101500","user_id":"45","book_status":"1","purchase_status":"1","user_name":"Rohan ","email":"","mobile":"7828876951","password":"","api_key":"","referral_code":"4e8175cec340","referred_by":"","security_pin":"3613","image":"3239870587823406700.jpg","wallet_balance":"0","hold_amount":"0","last_update":"2023-11-24 10:19:51","insert_date":"2023-11-24 13:40:25","status":"1","verified":"1","betting_status":"0","notification_status":"1","transfer_point_status":"0"},{"id":"38","game_id":"25","winner_price":"7000","winning_position":"3rd","lottery_no":"PB101900","lottery_number":"PB101900","user_id":"39","book_status":"1","purchase_status":"0","user_name":"Som Rajpoot ","email":"","mobile":"6363636363","password":"","api_key":"","referral_code":"6cec52b32921","referred_by":"","security_pin":"9581","image":"2199753295952965298.jpg","wallet_balance":"93","hold_amount":"7","last_update":"2023-11-21 15:01:43","insert_date":"2023-11-24 18:22:50","status":"1","verified":"1","betting_status":"1","notification_status":"1","transfer_point_status":"0"}],"user_count":"0","active":"1"}]
+/// lotteries : [{"game_id":"25","game_name":"Matka Lottery","game_name_hindi":"","open_time":"11:11 AM","open_time_sort":"00:00:00","close_time":"12:12 PM","status":"1","result_status":"1","market_status":"1","market_off_day":"","date":"2023-11-22","end_date":"2023-11-25","result_date":"2023-11-30","ticket_price":"20","image":"https://developmentalphawizz.com/lottery/assets/images/1700651279lotteryback.png","lottery_number":"","winners":[{"id":"30","game_id":"25","winner_price":"11110","winning_position":"1st","lottery_no":"PB101000","lottery_number":"PB101000","user_id":"39","book_status":"1","purchase_status":"1","user_name":"Som Rajpoot ","email":"","mobile":"6363636363","password":"","api_key":"","referral_code":"6cec52b32921","referred_by":"","security_pin":"4243","image":"2199753295952965298.jpg","wallet_balance":"1000000","hold_amount":"0","last_update":"2023-11-21 15:01:43","insert_date":"2023-11-24 13:03:23","status":"1","verified":"1","betting_status":"1","notification_status":"1","transfer_point_status":"0"},{"id":"34","game_id":"25","winner_price":"8000","winning_position":"2nd","lottery_no":"PB101500","lottery_number":"PB101500","user_id":"45","book_status":"1","purchase_status":"1","user_name":"Rohan ","email":"","mobile":"7828876951","password":"","api_key":"","referral_code":"4e8175cec340","referred_by":"","security_pin":"3613","image":null,"wallet_balance":"0","hold_amount":"0","last_update":"2023-11-24 10:19:51","insert_date":"2023-11-24 10:19:56","status":"1","verified":"1","betting_status":"0","notification_status":"1","transfer_point_status":"0"},{"id":"38","game_id":"25","winner_price":"7000","winning_position":"3rd","lottery_no":"PB101900","lottery_number":"PB101900","user_id":"39","book_status":"1","purchase_status":"0","user_name":"Som Rajpoot ","email":"","mobile":"6363636363","password":"","api_key":"","referral_code":"6cec52b32921","referred_by":"","security_pin":"4243","image":"2199753295952965298.jpg","wallet_balance":"1000000","hold_amount":"0","last_update":"2023-11-21 15:01:43","insert_date":"2023-11-24 13:03:23","status":"1","verified":"1","betting_status":"1","notification_status":"1","transfer_point_status":"0"}],"user_count":"0","active":"1"}]
 
 class Data {
   Data({
@@ -75,24 +75,23 @@ Data copyWith({  String? name,
 
 }
 
-/// game_id : "24"
+/// game_id : "25"
 /// game_name : "Matka Lottery"
 /// game_name_hindi : ""
-/// open_time : "02:00 PM"
+/// open_time : "11:11 AM"
 /// open_time_sort : "00:00:00"
-/// close_time : "06:30 PM"
+/// close_time : "12:12 PM"
 /// status : "1"
 /// result_status : "1"
 /// market_status : "1"
 /// market_off_day : ""
 /// date : "2023-11-22"
-/// end_date : "2023-11-24"
-/// result_date : "2023-11-27"
-/// result_time : "12:12"
-/// ticket_price : "500"
-/// image : "https://developmentalphawizz.com/lottery/assets/images/1700829485alpha_giftnew_logo.png"
+/// end_date : "2023-11-25"
+/// result_date : "2023-11-30"
+/// ticket_price : "20"
+/// image : "https://developmentalphawizz.com/lottery/assets/images/1700651279lotteryback.png"
 /// lottery_number : ""
-/// winners : [{"id":"22","game_id":"24","winner_price":"100000","winning_position":"1st","lottery_no":"PB101","lottery_number":"PB101","user_id":"39","book_status":"1","purchase_status":"1","user_name":"Som Rajpoot ","email":"","mobile":"6363636363","password":"","api_key":"","referral_code":"6cec52b32921","referred_by":"","security_pin":"9581","image":"2199753295952965298.jpg","wallet_balance":"93","hold_amount":"7","last_update":"2023-11-21 15:01:43","insert_date":"2023-11-24 18:22:50","status":"1","verified":"1","betting_status":"1","notification_status":"1","transfer_point_status":"0"},{"id":"25","game_id":"24","winner_price":"80000","winning_position":"2nd","lottery_no":"PB104","lottery_number":"PB104","user_id":"6","book_status":"1","purchase_status":"1","user_name":"Sunil","email":"","mobile":"8888647482","password":"e10adc3949ba59abbe56e057f20f883e","api_key":"","referral_code":"","referred_by":"","security_pin":"9992","image":"uploads/img/user/user.png","wallet_balance":"13000","hold_amount":"0","last_update":"2023-10-20 19:38:39","insert_date":"2023-11-24 12:54:24","status":"1","verified":"1","betting_status":"1","notification_status":"1","transfer_point_status":"0"},{"id":"27","game_id":"24","winner_price":"50000","winning_position":"3rd","lottery_no":"PB106","lottery_number":"PB106","user_id":"21","book_status":"1","purchase_status":"1","user_name":"Surendra","email":"","mobile":"9999999999","password":"","api_key":"","referral_code":"2675db01c965","referred_by":"","security_pin":"3053","image":"user.png","wallet_balance":"0","hold_amount":"0","last_update":"2023-11-08 17:16:25","insert_date":"2023-11-23 16:05:24","status":"1","verified":"0","betting_status":"0","notification_status":"1","transfer_point_status":"0"}]
+/// winners : [{"id":"30","game_id":"25","winner_price":"11110","winning_position":"1st","lottery_no":"PB101000","lottery_number":"PB101000","user_id":"39","book_status":"1","purchase_status":"1","user_name":"Som Rajpoot ","email":"","mobile":"6363636363","password":"","api_key":"","referral_code":"6cec52b32921","referred_by":"","security_pin":"4243","image":"2199753295952965298.jpg","wallet_balance":"1000000","hold_amount":"0","last_update":"2023-11-21 15:01:43","insert_date":"2023-11-24 13:03:23","status":"1","verified":"1","betting_status":"1","notification_status":"1","transfer_point_status":"0"},{"id":"34","game_id":"25","winner_price":"8000","winning_position":"2nd","lottery_no":"PB101500","lottery_number":"PB101500","user_id":"45","book_status":"1","purchase_status":"1","user_name":"Rohan ","email":"","mobile":"7828876951","password":"","api_key":"","referral_code":"4e8175cec340","referred_by":"","security_pin":"3613","image":null,"wallet_balance":"0","hold_amount":"0","last_update":"2023-11-24 10:19:51","insert_date":"2023-11-24 10:19:56","status":"1","verified":"1","betting_status":"0","notification_status":"1","transfer_point_status":"0"},{"id":"38","game_id":"25","winner_price":"7000","winning_position":"3rd","lottery_no":"PB101900","lottery_number":"PB101900","user_id":"39","book_status":"1","purchase_status":"0","user_name":"Som Rajpoot ","email":"","mobile":"6363636363","password":"","api_key":"","referral_code":"6cec52b32921","referred_by":"","security_pin":"4243","image":"2199753295952965298.jpg","wallet_balance":"1000000","hold_amount":"0","last_update":"2023-11-21 15:01:43","insert_date":"2023-11-24 13:03:23","status":"1","verified":"1","betting_status":"1","notification_status":"1","transfer_point_status":"0"}]
 /// user_count : "0"
 /// active : "1"
 
@@ -111,7 +110,6 @@ class Lotteries {
       String? date, 
       String? endDate, 
       String? resultDate, 
-      String? resultTime, 
       String? ticketPrice, 
       String? image, 
       String? lotteryNumber, 
@@ -131,7 +129,6 @@ class Lotteries {
     _date = date;
     _endDate = endDate;
     _resultDate = resultDate;
-    _resultTime = resultTime;
     _ticketPrice = ticketPrice;
     _image = image;
     _lotteryNumber = lotteryNumber;
@@ -154,7 +151,6 @@ class Lotteries {
     _date = json['date'];
     _endDate = json['end_date'];
     _resultDate = json['result_date'];
-    _resultTime = json['result_time'];
     _ticketPrice = json['ticket_price'];
     _image = json['image'];
     _lotteryNumber = json['lottery_number'];
@@ -180,7 +176,6 @@ class Lotteries {
   String? _date;
   String? _endDate;
   String? _resultDate;
-  String? _resultTime;
   String? _ticketPrice;
   String? _image;
   String? _lotteryNumber;
@@ -200,7 +195,6 @@ Lotteries copyWith({  String? gameId,
   String? date,
   String? endDate,
   String? resultDate,
-  String? resultTime,
   String? ticketPrice,
   String? image,
   String? lotteryNumber,
@@ -220,7 +214,6 @@ Lotteries copyWith({  String? gameId,
   date: date ?? _date,
   endDate: endDate ?? _endDate,
   resultDate: resultDate ?? _resultDate,
-  resultTime: resultTime ?? _resultTime,
   ticketPrice: ticketPrice ?? _ticketPrice,
   image: image ?? _image,
   lotteryNumber: lotteryNumber ?? _lotteryNumber,
@@ -241,7 +234,6 @@ Lotteries copyWith({  String? gameId,
   String? get date => _date;
   String? get endDate => _endDate;
   String? get resultDate => _resultDate;
-  String? get resultTime => _resultTime;
   String? get ticketPrice => _ticketPrice;
   String? get image => _image;
   String? get lotteryNumber => _lotteryNumber;
@@ -264,7 +256,6 @@ Lotteries copyWith({  String? gameId,
     map['date'] = _date;
     map['end_date'] = _endDate;
     map['result_date'] = _resultDate;
-    map['result_time'] = _resultTime;
     map['ticket_price'] = _ticketPrice;
     map['image'] = _image;
     map['lottery_number'] = _lotteryNumber;
@@ -278,12 +269,12 @@ Lotteries copyWith({  String? gameId,
 
 }
 
-/// id : "22"
-/// game_id : "24"
-/// winner_price : "100000"
+/// id : "30"
+/// game_id : "25"
+/// winner_price : "11110"
 /// winning_position : "1st"
-/// lottery_no : "PB101"
-/// lottery_number : "PB101"
+/// lottery_no : "PB101000"
+/// lottery_number : "PB101000"
 /// user_id : "39"
 /// book_status : "1"
 /// purchase_status : "1"
@@ -294,12 +285,12 @@ Lotteries copyWith({  String? gameId,
 /// api_key : ""
 /// referral_code : "6cec52b32921"
 /// referred_by : ""
-/// security_pin : "9581"
+/// security_pin : "4243"
 /// image : "2199753295952965298.jpg"
-/// wallet_balance : "93"
-/// hold_amount : "7"
+/// wallet_balance : "1000000"
+/// hold_amount : "0"
 /// last_update : "2023-11-21 15:01:43"
-/// insert_date : "2023-11-24 18:22:50"
+/// insert_date : "2023-11-24 13:03:23"
 /// status : "1"
 /// verified : "1"
 /// betting_status : "1"

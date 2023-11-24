@@ -9,6 +9,7 @@ import 'package:booknplay/Utils/custom_clip_path.dart';
 import 'package:booknplay/Widgets/commen_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_share/flutter_share.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -45,25 +46,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
     userId = await SharedPre.getStringValue('userId');
     userBalance = await SharedPre.getStringValue('balanceUser');
     setState(() {
-      get();
+      getProfile();
     });
   }
   GetProfileModel? getProfileModel;
   // Future<void> getProfile() async {
   //   var param = {
-  //     'user_id': userId.toString()
+  //     'user_id':userId.toString()
   //   };
   //   print('____param______${param}_________');
   //   apiBaseHelper.postAPICall(getProfileAPI, param).then((getData) {
-  //
   //     getProfileModel = GetProfileModel.fromJson(getData);
+  //     setState(() {
+  //
+  //     });
   //    // Fluttertoast.showToast(msg: msg);
   //
   //     //isLoading.value = false;
   //   });
   // }
 
-  get() async {
+
+
+  getProfile() async {
     var headers = {
       'Content-Type': 'application/json',
       'Cookie': 'ci_session=68b65db8a6659ad0354398bd4cd6449fc10b9b7f'
@@ -100,7 +105,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return RefreshIndicator(
       onRefresh: () {
         return Future.delayed(Duration(seconds: 2),(){
-          get();
+         // get();
         });
       },
       child: ListView.builder(
@@ -501,8 +506,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     SizedBox(height: 10,),
                     InkWell(
                       onTap: (){
-                        Get.toNamed(inviteFriend);
-
+                        share();
+                        // Get.toNamed(inviteFriend);
                       },
                       child: Container(
                         height: 50,
@@ -679,7 +684,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
       }),
     );
   }
-
+  Future<void> share() async {
+    await FlutterShare.share(
+        title: 'Invite Friend',
+        text: 'Invite Friend',
+        linkUrl: 'https://www.youtube.com/watch?v=jqxz7QvdWk8&list=PLjVLYmrlmjGfGLShoW0vVX_tcyT8u1Y3E',
+        chooserTitle: 'Invite Friend'
+    );
+  }
 // Function to execute when the user confirms logout
   Widget logOut(context){
     return AlertDialog(

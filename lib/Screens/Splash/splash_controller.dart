@@ -13,7 +13,7 @@ class SplashController extends AppBaseController {
   void onReady() {
     // TODO: implement onReady
     super.onReady();
-    checkLogin();
+    //checkLogin();
 
   }
 
@@ -21,9 +21,11 @@ class SplashController extends AppBaseController {
 
 
 checkLogin() async{
+  final isLogin = await SharedPre.getStringValue('userId');
+
+  print(isLogin + "userId");
 
     Timer(const Duration(seconds: 3),() async{
-      final isLogin = await SharedPre.getStringValue('userId');
 
       if(isLogin != null && isLogin != ''){
 

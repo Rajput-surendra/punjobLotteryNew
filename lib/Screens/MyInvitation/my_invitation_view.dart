@@ -12,6 +12,8 @@ import 'package:http/http.dart'as http;
 import 'dart:ui' as ui;
 import '../../Local_Storage/shared_pre.dart';
 import '../../Models/HomeModel/get_invaite_model.dart';
+import '../../Services/api_services/apiConstants.dart';
+import '../../Services/api_services/apiStrings.dart';
 import '../../Widgets/button.dart';
 
 class MyInvitation extends StatefulWidget {
@@ -27,6 +29,7 @@ class _MyInvitationState extends State<MyInvitation> {
     // TODO: implement initState
     super.initState();
     referCode();
+    //getInvatation();
   }
   String? userReferCode;
   referCode() async {
@@ -147,7 +150,7 @@ class _MyInvitationState extends State<MyInvitation> {
         chooserTitle: 'Invite Friend'
     );
   }
-  GetInviteesModel? myInvationModel;
+  GetInvaiteModel? myInvationModel;
   getInvatation() async {
     var headers = {
       'Content-Type': 'application/json',
@@ -157,15 +160,13 @@ class _MyInvitationState extends State<MyInvitation> {
     request.body = json.encode({
       "referred_by":userReferCode
     });
-   print("------Surendra-------${request.body}----------");
     request.headers.addAll(headers);
     http.StreamedResponse response = await request.send();
     if (response.statusCode == 200) {
       var result = await response.stream.bytesToString();
-      var finalResult = GetInviteesModel.fromJson(json.decode(result));
+      var finalResult = GetInvaiteModel.fromJson(json.decode(result));
       setState(() {
         myInvationModel = finalResult;
-        print("------Surendra-------${result}----------");
       });
       Fluttertoast.showToast(msg: "${finalResult.msg}");
 
@@ -175,6 +176,24 @@ class _MyInvitationState extends State<MyInvitation> {
     }
 
   }
+
+  // Future<void> getInvatation() async {
+  //   var param = {
+  //     "referred_by":"2675db01c965"
+  //   };
+  //   print('_____getData_____${param}_________');
+  //   apiBaseHelper.postAPICall(getInviteeAPI,param).then((getData) {
+  //     print('____getData______${getData}_________');
+  //     String msg = getData['msg'];
+  //     setState(() {
+  //       myInvationModel = GetInvaiteModel.fromJson(getData);
+  //     });
+  //
+  //     Fluttertoast.showToast(msg: msg);
+  //     //isLoading.value = false;
+  //   });
+  // }
+
 
 }
 class InvitationCodeGenerator {

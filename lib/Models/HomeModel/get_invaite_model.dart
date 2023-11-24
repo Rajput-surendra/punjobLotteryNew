@@ -1,11 +1,11 @@
-class GetInviteesModel {
+class GetInvaiteModel {
   String? msg;
   bool? status;
   List<Invitees>? invitees;
 
-  GetInviteesModel({this.msg, this.status, this.invitees});
+  GetInvaiteModel({this.msg, this.status, this.invitees});
 
-  GetInviteesModel.fromJson(Map<String, dynamic> json) {
+  GetInvaiteModel.fromJson(Map<String, dynamic> json) {
     msg = json['msg'];
     status = json['status'];
     if (json['invitees'] != null) {
@@ -37,6 +37,7 @@ class Invitees {
   String? referralCode;
   String? referredBy;
   String? securityPin;
+  String? image;
   String? walletBalance;
   String? holdAmount;
   String? lastUpdate;
@@ -57,6 +58,7 @@ class Invitees {
         this.referralCode,
         this.referredBy,
         this.securityPin,
+        this.image,
         this.walletBalance,
         this.holdAmount,
         this.lastUpdate,
@@ -77,6 +79,7 @@ class Invitees {
     referralCode = json['referral_code'];
     referredBy = json['referred_by'];
     securityPin = json['security_pin'];
+    image = json['image'];
     walletBalance = json['wallet_balance'];
     holdAmount = json['hold_amount'];
     lastUpdate = json['last_update'];
@@ -99,6 +102,7 @@ class Invitees {
     data['referral_code'] = this.referralCode;
     data['referred_by'] = this.referredBy;
     data['security_pin'] = this.securityPin;
+    data['image'] = this.image;
     data['wallet_balance'] = this.walletBalance;
     data['hold_amount'] = this.holdAmount;
     data['last_update'] = this.lastUpdate;

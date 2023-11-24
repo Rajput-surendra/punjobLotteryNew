@@ -14,6 +14,7 @@ import '../../Models/HomeModel/lottery_model.dart';
 import '../../Services/api_services/apiConstants.dart';
 import '../../Services/api_services/apiStrings.dart';
 import '../Notification/notification_view.dart';
+import '../Winner/winner_details_view.dart';
 import '../Winner/winner_view.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -71,7 +72,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
-
         body:getSliderModel == null ?Center(child: CircularProgressIndicator()) :RefreshIndicator(
           onRefresh: () {
             return Future.delayed(Duration(seconds: 2),(){
@@ -98,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CarouselSlider(
-                        items: getSliderModel?.sliderdata!
+                        items: getSliderModel!.sliderdata!
                             .map(
                               (item) => Stack(
                               alignment: Alignment.center,
@@ -159,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
 
                             const Text(
-                              "Punjab Lottery",
+                              "Winner Lottery",
                               style: TextStyle(
                                   color: AppColors.fntClr,
                                   fontSize: 18,
@@ -184,54 +184,57 @@ class _HomeScreenState extends State<HomeScreen> {
                                 height: 80,
                                 child: ListView.builder(
                                     scrollDirection: Axis.horizontal,
-                                      itemCount:getResultModel?.data?.lotteries?.length,
+                                      itemCount:getResultModel!.data!.lotteries!.length,
                                     itemBuilder: (BuildContext context, int index) {
-                                      return  Container(
-                                        height: 50,
-                                        width: 160,
-                                        decoration:  const BoxDecoration(
-                                          image:  DecorationImage(
-                                            image:  AssetImage("assets/images/homewinnerback.png"),
-                                            fit: BoxFit.fill,
+                                      return  InkWell(
+                                        onTap: (){
+                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>WinnerDetailsScreen(gId: getResultModel!.data!.lotteries![index].gameId,)));
+                                        },
+                                        child: Container(
+                                          height: 50,
+                                          width: 170,
+                                          decoration:  const BoxDecoration(
+                                            image:  DecorationImage(
+                                              image:  AssetImage("assets/images/homewinnerback.png"),
+                                              fit: BoxFit.fill,
+                                            ),
                                           ),
-                                        ),
-                                        child:  Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                children: [
-                                                  Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: [
-                                                      Text("${getResultModel?.data?.lotteries?[index].gameName}",style: TextStyle(color: AppColors.whit,fontSize: 14),),
-                                                      SizedBox(height: 3,),
-                                                       Text("₹${getResultModel?.data?.lotteries?[index].winners?[0].winnerPrice}",style: TextStyle(color: AppColors.whit),),
-                                                      SizedBox(height: 3,),
-                                                       Container(
-                                                         width: 120,
-                                                           child: Text(getResultModel?.data?.lotteries?[index].winners?[0].userName??"",style: TextStyle(color: AppColors.whit),maxLines: 1,overflow: TextOverflow.ellipsis,)),
+                                          child:  Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  children: [
+                                                    Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        Text("${getResultModel!.data!.lotteries![index].gameName}",style: TextStyle(color: AppColors.whit,fontSize: 14),),
+                                                        SizedBox(height: 3,),
+                                                         Text("₹${getResultModel!.data!.lotteries![index].winners![0].winnerPrice}",style: TextStyle(color: AppColors.whit),),
+                                                        SizedBox(height: 3,),
+                                                         Container(
+                                                           width: 90,
+                                                             child: Text(getResultModel!.data!.lotteries![index].winners![0].userName??"",style: TextStyle(color: AppColors.whit),maxLines: 1,overflow: TextOverflow.ellipsis,)),
 
-                                                    ],
-                                                  ),
-                                                  ClipRRect(
-                                                    borderRadius: BorderRadius.circular(10),
-                                                    child: Container(
-                                                        height: 40,
-                                                        width: 40,
-                                                        child: Image.network("${getResultModel?.data?.lotteries?[index].image}",fit: BoxFit.fill,)),
-                                                  ),
-                                                ],
-                                              ),
+                                                      ],
+                                                    ),
+                                                    ClipRRect(
+                                                      borderRadius: BorderRadius.circular(10),
+                                                      child: Container(
+                                                          height: 40,
+                                                          width: 40,
+                                                          child: Image.network("${getResultModel!.data!.lotteries![index].image}",fit: BoxFit.fill,)),
+                                                    ),
+                                                  ],
+                                                ),
 
-                                            ],
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       );
-
-
 
                                     }
                                 ),
@@ -259,7 +262,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Padding(
                             padding: const EdgeInsets.all(3.0),
                             child: Container(
-                              //height: MediaQuery.of(context).size.height/1.1,
+                             // height: MediaQuery.of(context).size.height/1.1,
                               child: ListView.builder(
                                   scrollDirection: Axis.vertical,
                                   shrinkWrap: true,
@@ -452,6 +455,8 @@ class _HomeScreenState extends State<HomeScreen> {
       String msg = getData['msg'];
       if (status == true) {
         getSliderModel = GetSliderModel.fromJson(getData);
+        setState(() {
+        });
       } else {
         Fluttertoast.showToast(msg: msg);
       }

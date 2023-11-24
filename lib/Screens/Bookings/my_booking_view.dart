@@ -57,136 +57,118 @@ class _MyBookingsScreenState extends State<MyBookingsScreen> {
       ),
       body:  SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 10,),
-              Padding(
-                padding: const EdgeInsets.all(0.0),
-                child: Column(
+          padding:  EdgeInsets.all(2.0),
+          child:RefreshIndicator(
+            onRefresh: (){
+              return Future.delayed(Duration(seconds: 2), () {
+                getLottery();
+              });
+
+            },
+            child: Container(
+              height: MediaQuery.of(context).size.height/1.0,
+              child: ListView.builder(
+                    itemCount: 1,
+                  itemBuilder: (context,i){
+                return  Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    SizedBox(height: 10,),
                     Padding(
-                      padding: const EdgeInsets.all(3.0),
-                      child: Container(
-                        //height: MediaQuery.of(context).size.height/1.1,
-                        child: ListView.builder(
-                            scrollDirection: Axis.vertical,
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount:myLotteryModel?.data?.lotteries?.length ?? 0,
-                            // itemCount:2,
-                            itemBuilder: (context, index) {
-                              return InkWell(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(5.0),
-                                  child: Container(
-                                      height: 90,
-                                      decoration: const BoxDecoration(
-                                          image: DecorationImage(
-                                              image: AssetImage("assets/images/myLotterybooking.png"), fit: BoxFit.fill)),
-                                      child:  Column(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(left: 5,right: 5),
-                                            child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      padding: const EdgeInsets.all(0.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(3.0),
+                            child: Container(
+                              //height: MediaQuery.of(context).size.height/1.1,
+                              child:myLotteryModel == null ? Center(child: CircularProgressIndicator()): ListView.builder(
+                                  scrollDirection: Axis.vertical,
+                                  shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  itemCount:myLotteryModel!.data!.lotteries!.length ,
+                                  // itemCount:2,
+                                  itemBuilder: (context, index) {
+                                    return InkWell(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(5.0),
+                                        child: Container(
+                                            height: 90,
+                                            decoration: const BoxDecoration(
+                                                image: DecorationImage(
+                                                    image: AssetImage("assets/images/myLotterybooking.png"), fit: BoxFit.fill)),
+                                            child:  Column(
                                               children: [
-                                                Row(
-                                                  children: [
-                                                    Text("Result Date :",style: TextStyle(color: AppColors.whit,fontSize: 12),),
-                                                    SizedBox(width: 2,),
-                                                    Text("${myLotteryModel?.data?.lotteries?[index].resultDate}",style: TextStyle(color: AppColors.whit,fontSize: 12),)
-                                                  ],
+                                                Padding(
+                                                  padding: const EdgeInsets.only(left: 5,right: 5),
+                                                  child: Row(
+                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                    children: [
+                                                      Row(
+                                                        children: [
+                                                          Text("Result Date :",style: TextStyle(color: AppColors.whit,fontSize: 12),),
+                                                          SizedBox(width: 2,),
+                                                          Text("${myLotteryModel!.data!.lotteries![index].resultDate}",style: TextStyle(color: AppColors.whit,fontSize: 12),)
+                                                        ],
+                                                      ),
+                                                      Row(
+                                                        children: [
+                                                          SizedBox(height: 25,),
+                                                          Text("Result Time:",style: TextStyle(color: AppColors.whit,fontSize: 12),),
+                                                          SizedBox(width: 2,),
+                                                          myLotteryModel!.data!.lotteries![index].resultTime == null ? Text("") :   Text("${myLotteryModel!.data!.lotteries![index].resultTime}",style: TextStyle(color: AppColors.whit,fontSize: 12),)
+                                                        ],
+                                                      ),
+
+                                                    ],
+                                                  ),
                                                 ),
-                                                Row(
-                                                  children: [
-                                                    SizedBox(height: 25,),
-                                                    Text("Result Time:",style: TextStyle(color: AppColors.whit,fontSize: 12),),
-                                                    SizedBox(width: 2,),
-                                                    Text("${myLotteryModel?.data?.lotteries?[index].resultDate}",style: TextStyle(color: AppColors.whit,fontSize: 12),)
-                                                  ],
+                                                Padding(
+                                                  padding: const EdgeInsets.all(8.0),
+                                                  child: Row(
+                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                    children: [
+                                                      Column(
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        children: [
+                                                          Text("${myLotteryModel!.data!.lotteries![index].gameName}",style: TextStyle(color: AppColors.whit,fontSize: 12),),
+                                                          SizedBox(height: 3,),
+                                                          Text("Price : ${myLotteryModel!.data!.lotteries![index].ticketPrice}",style: TextStyle(color: AppColors.whit,fontSize: 18),),
+
+                                                        ],
+                                                      ),
+
+                                                      // myLotteryModel?.data?.lotteries?[index].active == '0' ? SizedBox.shrink():  Text("Betting is Running Now",style: TextStyle(color: AppColors.whit,fontSize: 12),),
+                                                      Container(
+                                                        height: 45,width: 50,
+                                                        child: ClipRRect(
+                                                            borderRadius: BorderRadius.circular(10),
+                                                            child: Image.network("${myLotteryModel!.data!.lotteries![index].image}",fit: BoxFit.fill,)),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
 
                                               ],
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text("${myLotteryModel?.data?.lotteries?[index].gameName}",style: TextStyle(color: AppColors.whit,fontSize: 12),),
-                                                    SizedBox(height: 3,),
-                                                    Text("Price : ${myLotteryModel?.data?.lotteries?[index].ticketPrice}",style: TextStyle(color: AppColors.whit,fontSize: 18),),
+                                            )
+                                        ),
+                                      ),
+                                    );
+                                  }
+                              ),
+                            ),
+                          ),
 
-                                                  ],
-                                                ),
-
-                                                // myLotteryModel?.data?.lotteries?[index].active == '0' ? SizedBox.shrink():  Text("Betting is Running Now",style: TextStyle(color: AppColors.whit,fontSize: 12),),
-                                                Container(
-                                                  height: 45,width: 50,
-                                                  child: ClipRRect(
-                                                      borderRadius: BorderRadius.circular(10),
-                                                      child: Image.network("${myLotteryModel?.data?.lotteries?[index].image}",fit: BoxFit.fill,)),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-
-                                          // Padding(
-                                          //   padding: const EdgeInsets.only(left: 5,right: 5),
-                                          //   child: Row(
-                                          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          //     children: [
-                                          //       Row(
-                                          //         children: [
-                                          //           SizedBox(height: 25,),
-                                          //           Text("Start:",style: TextStyle(color: AppColors.whit,fontSize: 12),),
-                                          //           SizedBox(width: 2,),
-                                          //           Text("${myLotteryModel?.data?.lotteries?[index].date}",style: TextStyle(color: AppColors.whit,fontSize: 12),)
-                                          //         ],
-                                          //       ),
-                                          //       Row(
-                                          //         children: [
-                                          //           SizedBox(height: 25,),
-                                          //           Text("End:",style: TextStyle(color: AppColors.whit,fontSize: 12),),
-                                          //           SizedBox(width: 2,),
-                                          //           Text("${myLotteryModel?.data?.lotteries?[index].endDate}",style: TextStyle(color: AppColors.whit,fontSize: 12),)
-                                          //         ],
-                                          //       ),
-                                          //       Row(
-                                          //         children: [
-                                          //
-                                          //           Text("Result:",style: TextStyle(color: AppColors.whit,fontSize: 12),),
-                                          //           SizedBox(width: 2,),
-                                          //           Text("${myLotteryModel?.data?.lotteries?[index].resultDate}",style: TextStyle(color: AppColors.whit,fontSize: 12),)
-                                          //         ],
-                                          //       ),
-                                          //     ],
-                                          //   ),
-                                          // ),
-
-                                        ],
-                                      )
-                                  ),
-                                ),
-                              );
-                            }
-                        ),
+                        ],
                       ),
                     ),
 
                   ],
-                ),
-              ),
-
-            ],
-          ),
+                );
+              }),
+            ),
+          )
         ),
       )
     ) ;
@@ -201,6 +183,9 @@ class _MyBookingsScreenState extends State<MyBookingsScreen> {
     apiBaseHelper.postAPICall(getLotteryAPI, param).then((getData) {
       String msg = getData['msg'];
       myLotteryModel = MyLotteryModel.fromJson(getData);
+      setState(() {
+
+      });
       Fluttertoast.showToast(msg: msg);
 
       //isLoading.value = false;

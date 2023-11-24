@@ -15,13 +15,14 @@ final Uri getLotteryDetailsAPI = Uri.parse('${baseUrl}Apicontroller/getLotteries
 final Uri getInviteeAPI = Uri.parse('${baseUrl}Apicontroller/apiGetInvitees');
 final Uri getResultAPI = Uri.parse('${baseUrl}Apicontroller/getResults');
 final Uri getProfileAPI = Uri.parse('${baseUrl}Apicontroller/apiGetProfile');
+final Uri getTransactionHistoryAPI = Uri.parse('${baseUrl}apiUserWithdrawTransactionHistory');
+
 
 
 
 final Uri getCountry = Uri.parse('${baseUrl}get_countries');
 final Uri getSate= Uri.parse('${baseUrl}get_states');
 final Uri getUserLogin= Uri.parse('${baseUrl}login');
-
 final Uri forgotAPI= Uri.parse('${baseUrl}forgot_password');
 final Uri homeSliderAPI= Uri.parse('${baseUrl}golf_banners');
 final Uri homeCategoryAPI= Uri.parse('${baseUrl}ground_category');

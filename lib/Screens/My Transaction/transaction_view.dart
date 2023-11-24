@@ -1,7 +1,15 @@
+import 'dart:convert';
+
 import 'package:booknplay/Utils/Colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import '../../Local_Storage/shared_pre.dart';
+import '../../Models/HomeModel/Get_transaction_model.dart';
 import '../../Models/HomeModel/lottery_list_model.dart';
+import '../../Services/api_services/apiConstants.dart';
+import '../../Services/api_services/apiStrings.dart';
+import 'package:http/http.dart'as http;
 
 class TransactionScreen extends StatefulWidget {
   TransactionScreen({Key? key, this.isFrom,this.gId}) : super(key: key);
@@ -17,6 +25,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
   @override
   void initState() {
     super.initState();
+    getUser();
   }
 
 
@@ -49,9 +58,9 @@ class _TransactionScreenState extends State<TransactionScreen> {
             child: Container(
               height: MediaQuery.of(context).size.height/1.1,
               child: ListView.builder(
-                  itemCount: 10,
+                  itemCount: getTransactionModel!.withdrawdata!.length,
                   itemBuilder: (context,i){
-                    return  const Padding(
+                    return   Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Card(
                         elevation: 1,
@@ -60,7 +69,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("This is a Notification"),
+                              Text("${getTransactionModel!.withdrawdata![i].acHolderName}"),
                               Text("Hello Surendra"),
                             ],
                           ),
@@ -76,7 +85,57 @@ class _TransactionScreenState extends State<TransactionScreen> {
   }
 
 
-  LotteryListModel? lotteryDetailsModel;
+   String ?userId;
+  GetTransactionModel? getTransactionModel;
+  getTransactionApi() async {
+    var headers = {
+      'Content-Type': 'application/json',
+      'Cookie': 'ci_session=18afbdd33b04ace40a80944d83e9e23e3ab91c3e'
+    };
+    var request = http.Request('POST', Uri.parse('https://developmentalphawizz.com/lottery/apiUserWithdrawTransactionHistory'));
+    request.body = json.encode({
+      "user_id": userId
+    });
+    print('_____request.body_____${request.body}_________');
+    request.headers.addAll(headers);
+    http.StreamedResponse response = await request.send();
+    if (response.statusCode == 200) {
+      var result = await response.stream.bytesToString();
+      var finalResult  =  GetTransactionModel.fromJson(json.decode(result));
+        Fluttertoast.showToast(msg: "${finalResult.msg}");
+      setState(() {
+        getTransactionModel = finalResult;
+
+      });
+    }
+    else {
+      print(response.reasonPhrase);
+    }
+
+  }
+ // String? userId;
+  getUser() async {
+    userId = await SharedPre.getStringValue('userId');
+    getTransactionApi();
+  }
+
+  // Future<void> getTransactionApi() async {
+  //   // isLoading.value = true;
+  //   var param = {
+  //     'user_id':userId
+  //   };
+  //   print('__________${param}_________');
+  //   apiBaseHelper.postAPICall(getTransactionHistoryAPI, param).then((getData) {
+  //     print('____getData______${getData}_________');
+  //     String msg = getData['msg'];
+  //     getTransactionModel = GetTransactionModel.fromJson(getData);
+  //     setState(() {
+  //
+  //     });
+  //     Fluttertoast.showToast(msg: msg);
+  //     //isLoading.value = false;
+  //   });
+  // }
 
 //   String ?userId;
 //   getLottery() async {
